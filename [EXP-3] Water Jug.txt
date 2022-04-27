@@ -1,0 +1,60 @@
+from collections import defaultdict
+
+jug1, jug2 = 4, 3
+aim = 2
+
+visited = defaultdict(lambda: False)
+
+def waterJugSolver(amt1, amt2):
+
+        if (amt1 == aim and amt2 == 0) or (amt2 == aim and amt1 == 0):
+                print(amt1, amt2)
+                return True
+
+        if visited[(amt1, amt2)] == False:
+                print(amt1, amt2)
+
+                visited[(amt1, amt2)] = True
+
+                return (waterJugSolver(0, amt2) or
+                                waterJugSolver(amt1, 0) or
+                                waterJugSolver(jug1, amt2) or
+                                waterJugSolver(amt1, jug2) or
+                                waterJugSolver(amt1 + min(amt2, (jug1-amt1)),
+                                amt2 - min(amt2, (jug1-amt1))) or
+                                waterJugSolver(amt1 - min(amt1, (jug2-amt2)),
+                                amt2 + min(amt1, (jug2-amt2))))
+
+        else:
+                return False
+
+print("Steps: ")
+
+waterJugSolver(0, 0)
+
+
+/*
+
+THEORY:
+This is the jug problem using simple depth-first search of a graph.
+The modified water-jug problem is as follows: Jug A holds 4 liters, and jug B holds 3 liters.
+There is a pump, which can be used to fill either Jug. How can you get exactly 2 liters ofwater into
+the 4-liter jug?
+Assumptions:
+We can fill a jug from the pump
+We can pour water out of the jug onto the ground
+We can pour water from one jug to another
+There are no other measuring devices available
+To solve the water jug problem, apart from problem statement we also need a control
+structure that loops through a simple cycle in which some rule whose left side matches the current
+state is chosen, the appropriate change to state is made as described in correspondingright side
+and the resulting state is checked to see if it corresponds to a goal state. As long as it does not the
+cycle continues.
+
+CONCLUSION:
+In state space problem, the problem consists of four components: initial state, a set of
+actions, a goal test functions and a path cost function is analysed. The environment of the
+problem is represented by a state space and path from initial state to goal state is been
+analysed.
+
+*/

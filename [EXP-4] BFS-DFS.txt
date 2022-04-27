@@ -1,0 +1,77 @@
+//BFS
+graph = {
+  '5' : ['3','7'],
+  '3' : ['2', '4'],
+  '7' : ['8'],
+  '2' : [],
+  '4' : ['8'],
+  '8' : []
+}
+
+visited = [] 
+queue = []     
+
+def bfs(visited, graph, node):
+  visited.append(node)
+  queue.append(node)
+
+  while queue:
+    m = queue.pop(0) 
+    print (m, end = " ") 
+
+    for neighbour in graph[m]:
+      if neighbour not in visited:
+        visited.append(neighbour)
+        queue.append(neighbour)
+
+print("Following is the Breadth-First Search")
+bfs(visited, graph, '5')
+
+//DFS
+graph = {
+  '5' : ['3','7'],
+  '3' : ['2', '4'],
+  '7' : ['8'],
+  '2' : [],
+  '4' : ['8'],
+  '8' : []
+}
+
+visited = set() # Set to keep track of visited nodes of graph.
+
+def dfs(visited, graph, node):  #function for dfs 
+    if node not in visited:
+        print (node)
+        visited.add(node)
+        for neighbour in graph[node]:
+            dfs(visited, graph, neighbour)
+# Driver Code
+print("Following is the Depth-First Search")
+dfs(visited, graph, '5')
+
+
+/*
+
+THEORY:
+Breadth-first search
+• Breadth-first search is a simple strategy in which the root node is expanded first, then
+all the successors of the root node are expanded next, then their successors, and so on.
+• Breadth-first search can be implemented by calling TREE-SEARCH with an empty fringe
+that is a first-in-first-out (FIFO) queue, assuring that the nodes that are visited first will be
+expanded first.
+• It uses two queues for its implementation: op
+
+Depth-first search
+• In depth-first search, the frontier acts like a last-in first-out stack.
+• The elements are added to the stack one at a time.
+
+CONCLUSION:
+BFS is an uniformed search technique. It selects the shallowest unexpanded node in the
+search tree for expansion. It is complete, optimal for unit step costs and has time and space
+complexity of O(bd
+). BFS is implemented in C or java .
+DFS is an uninformed search technique. It searches deeper into the problem space. It has
+time complexity as O(b m) and space complexity of O(b*m). DFS is implemented in C or
+java.
+
+*/

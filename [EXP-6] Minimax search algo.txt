@@ -1,0 +1,50 @@
+import math
+
+def minimax (curDepth, nodeIndex, maxTurn, scores,targetDepth):
+
+    if (curDepth == targetDepth):
+        return scores[nodeIndex]
+
+    if (maxTurn):
+        t1=minimax(curDepth + 1, nodeIndex * 2,
+                    False, scores, targetDepth)
+        t2=minimax(curDepth + 1, nodeIndex * 2 + 1,
+                    False, scores, targetDepth)
+        return max(t1,t2)
+
+    else:
+        t1=minimax(curDepth + 1, nodeIndex * 2,
+                     True, scores, targetDepth)
+        t2=minimax(curDepth + 1, nodeIndex * 2 + 1,
+                     True, scores, targetDepth)
+        return min(t1,t2)
+
+scores = [3, 5, 2, 9, 12, 5, 15, 12]
+
+treeDepth = math.log(len(scores), 2)
+
+print("The optimal value is : ", end = "")
+print(minimax(0, 0, True, scores, treeDepth))
+
+
+/*
+
+THEORY:
+The minimax algorithm computes the minimax decision from the current state. It
+uses a simple recursive computation of the minimax values of each successor state, directly
+implementing the defining equations. The recursion process all the way down to the leaves of the
+tree, and then the minimax values are backed up through the tree as the recursion unwinds.
+The minimax algorithm performs a complete depth-first exploration of the game tree. If
+the maximum depth of the tree is m, and there are b legal moves at each point, then the time
+complexity of the minimax algorithm is O(b m). The space complexity is O(bm) for an algorithm
+that generates all successors at once, or O(m) for an algorithm that generates successors one at a
+time. For real games, of course, the time cost is totally impractical, but this algorithm serves as the
+basis for the mathematical analysis of games and for more practical algorithms.
+
+CONCLUSION:
+Informed search covers algorithms that perform purely local search in the state space, evaluating
+and modifying one or more current states. These algorithms are suitable for the problem in which
+the path cost is irrelevant and all that matters is the solution state itself. One of the informed search
+method that is hill climbing search algorithm is executed.
+
+*/

@@ -1,0 +1,35 @@
+/*
+
+THEORY:
+An agent is something that perceives and acts in an environment. The agent function for an agent
+specifies the action taken by the agent in response to any percept sequence. An agent is anything
+that can be viewed as perceiving its environment through sensors and acting upon that environment
+through actuators.
+
+PEAS specify the setting of an intelligent agent:
+• P: The performance measure defines degree of success.
+• E: What does the agent know about the environment?
+• A: The actions that the agent can perform.
+• S: Everything that an agent as perceived so far through its sensors.
+
+Robot : PEAS
+Agent: Part-picking robot
+Performance measure: Percentage of parts in correct bins
+Environment: Convey p, or belt with parts, bins
+Actuators: Jointed arm and hand
+Sensors: Camera, joint angle sensors
+
+Medical Example: PEAS
+Agent: Medical diagnosis system
+Performance measure: Healthy patient, minimize costs, lawsuits
+Environment: Patient, p, hospital, staff
+Actuators: Screen display (questions, tests, diagnoses, treatments, referrals)
+Sensors: Keyboard (entry of symptoms, findings, patient's answers)
+
+CONCLUSION:
+For any given problem for a particular agent the required performance measure to measure the
+accuracy of an agent, the environment behaviour of an agent, the sensors required to receive the
+input from environment and the actuators required to perform the task is carefully observed and
+analysed.
+
+*/
