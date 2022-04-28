@@ -61,6 +61,7 @@ adjac_lis = {
 graph1 = Graph(adjac_lis)
 graph1.a_star_algorithm('A', 'D')
 
+//alternative: wHY5ulRe9
 
 /*
 
